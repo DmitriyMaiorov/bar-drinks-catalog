@@ -4,6 +4,10 @@
 <h2>Категории</h2>
 
 {% for c in categories %}
-    <p>{{ c.name }}</p>
+    <p>
+        <a href="{% url 'drinks_by_category' c.id %}">
+        {{ c.name }}
+    </a>
+    </p>
 {% endfor %}
 {% endblock %}

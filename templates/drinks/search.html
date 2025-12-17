@@ -1,12 +1,16 @@
-{% extends 'base.html' %}
-
-{% block content %}
 <form>
-    <input name="q" placeholder="Поиск">
+    <input name="q" placeholder="Поиск" value="{{ query }}">
     <button>Найти</button>
 </form>
 
+<hr>
+
 {% for drink in drinks %}
-    <p>{{ drink.name }}</p>
+    <p>
+        <a href="{% url 'drink_detail' drink.id %}">
+            {{ drink.name }}
+        </a>
+    </p>
+{% empty %}
+    <p>Ничего не найдено</p>
 {% endfor %}
-{% endblock %}

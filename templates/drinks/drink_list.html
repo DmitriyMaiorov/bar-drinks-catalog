@@ -3,6 +3,10 @@
 {% block content %}
 <h1>Напитки</h1>
 
+{% if category %}
+    <h2>Категория: {{ category.name }}</h2>
+{% endif %}
+
 {% for drink in drinks %}
     <p>
         <a href="/drink/{{ drink.id }}/">{{ drink.name }}</a>
