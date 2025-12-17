@@ -1,0 +1,9 @@
+<h1>{{ category.name }}</h1>
+<p>{{ category.description }}</p>
+
+<h2>Напитки:</h2>
+<ul>
+    {% for drink in drinks %}
+        <li><a href="{% url 'drink_detail' drink.id %}">{{ drink.name }}</a></li>
+    {% endfor %}
+</ul>
