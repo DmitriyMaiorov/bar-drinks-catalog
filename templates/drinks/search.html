@@ -1,16 +1,19 @@
-<form>
-    <input name="q" placeholder="Поиск" value="{{ query }}">
-    <button>Найти</button>
+{% extends 'base.html' %}
+{% block content %}
+
+<h2 class="page-title">Поиск</h2>
+
+<form class="search-form">
+    <input name="q" placeholder="Название или ингредиент">
+    <button class="btn">Найти</button>
 </form>
 
-<hr>
-
 {% for drink in drinks %}
-    <p>
-        <a href="{% url 'drink_detail' drink.id %}">
-            {{ drink.name }}
-        </a>
-    </p>
+    <div class="search-item">
+        <a href="/drink/{{ drink.id }}/">{{ drink.name }}</a>
+    </div>
 {% empty %}
-    <p>Ничего не найдено</p>
+    <p class="muted">Ничего не найдено</p>
 {% endfor %}
+
+{% endblock %}
