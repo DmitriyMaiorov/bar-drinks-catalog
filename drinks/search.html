@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Поиск напитков</title>
+</head>
+<body>
+    <h1>Поиск напитков</h1>
+
+    <form method="GET">
+        <input type="text" name="q" placeholder="Введите название" value="{{ query }}">
+        <button type="submit">Поиск</button>
+    </form>
+
+    <hr>
+
+    {% if results %}
+        <h2>Результаты:</h2>
+        <ul>
+            {% for drink in results %}
+                <li>{{ drink.name }} — {{ drink.description }}</li>
+            {% endfor %}
+        </ul>
+    {% elif query %}
+        <p>Ничего не найдено 😢</p>
+    {% endif %}
+</body>
+</html>
