@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Барные напитки</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+<nav>
+    <a href="/">Главная</a>
+    <a href="/categories/">Категории</a>
+    <a href="/search/">Поиск</a>
+    <a href="/admin/">Админка</a>
+</nav>
+<hr>
+{% block content %}{% endblock %}
+</body>
+</html>

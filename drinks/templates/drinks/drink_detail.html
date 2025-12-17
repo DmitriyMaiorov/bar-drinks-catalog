@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form>
+    <input name="q" placeholder="Поиск">
+    <button>Найти</button>
+</form>
+
+{% for drink in drinks %}
+<p>{{ drink.name }}</p>
+{% endfor %}
+{% endblock %}

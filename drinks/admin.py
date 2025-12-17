@@ -1,9 +1,6 @@
 from django.contrib import admin
-from .models import Drink
+from .models import Drink, Category, Comment
 
-@admin.register(Drink)
-class DrinkAdmin(admin.ModelAdmin):
-    list_display = ('name', 'category')
-
-
-
+admin.site.register(Drink)
+admin.site.register(Category)
+admin.site.register(Comment)
