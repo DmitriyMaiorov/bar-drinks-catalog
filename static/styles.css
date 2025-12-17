@@ -1,0 +1,124 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Inter, Arial, sans-serif;
+    background: #0f0f14;
+    color: #eaeaf0;
+}
+
+/* Layout */
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* Header */
+.header {
+    background: linear-gradient(90deg, #6a11cb, #2575fc);
+    padding: 15px 0;
+}
+
+.logo {
+    margin: 0;
+}
+
+.header nav a {
+    color: white;
+    margin-left: 15px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.header nav a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+.footer {
+    margin-top: 60px;
+    padding: 20px;
+    text-align: center;
+    color: #777;
+}
+
+/* Titles */
+.page-title {
+    margin: 30px 0 20px;
+}
+
+/* Cards */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: #1a1a24;
+    border-radius: 14px;
+    padding: 20px;
+    transition: transform .2s, box-shadow .2s;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 30px rgba(0,0,0,.4);
+}
+
+.card h3 {
+    margin-top: 0;
+}
+
+.card-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Detail */
+.detail-card {
+    background: #1a1a24;
+    padding: 30px;
+    border-radius: 16px;
+}
+
+/* Buttons */
+.btn {
+    background: linear-gradient(90deg, #ff416c, #ff4b2b);
+    border: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn.like {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+/* Forms */
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 10px;
+}
+
+.comment {
+    background: #1f1f2b;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.muted {
+    color: #aaa;
+    font-size: 14px;
+}
