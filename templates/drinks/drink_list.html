@@ -1,16 +1,21 @@
 {% extends 'base.html' %}
-
 {% block content %}
-<h1>Напитки</h1>
 
-{% if category %}
-    <h2>Категория: {{ category.name }}</h2>
-{% endif %}
+<h2 class="page-title">Популярные напитки</h2>
 
+<div class="grid">
 {% for drink in drinks %}
-    <p>
-        <a href="/drink/{{ drink.id }}/">{{ drink.name }}</a>
-        ❤️ {{ drink.likes }}
-    </p>
+    <div class="card">
+        <h3>{{ drink.name }}</h3>
+        <p class="muted">{{ drink.description|truncatechars:80 }}</p>
+        <div class="card-bottom">
+            <a class="btn" href="/drink/{{ drink.id }}/">Открыть</a>
+            <span>❤️ {{ drink.likes }}</span>
+        </div>
+    </div>
+{% empty %}
+    <p>Напитков пока нет</p>
 {% endfor %}
+</div>
+
 {% endblock %}
