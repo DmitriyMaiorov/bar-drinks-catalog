@@ -25,3 +25,15 @@ def category_detail(request, category_id):
     })
 path('categories/', category_list, name='category_list'),
 path('categories/<int:category_id>/', category_detail, name='category_detail'),
+
+from django.shortcuts import render
+from .models import Drink
+
+def search_drinks(request):
+    query = request.GET.get("q")
+    results = []
+
+    if query:
+        results = Drink.objects.filter(name__icontains=query)
+
+    return render(request, "search.html", {"results": results, "query": query})
