@@ -23,3 +23,5 @@ def category_detail(request, category_id):
         'category': category,
         'drinks': drinks
     })
+path('categories/', category_list, name='category_list'),
+path('categories/<int:category_id>/', category_detail, name='category_detail'),
