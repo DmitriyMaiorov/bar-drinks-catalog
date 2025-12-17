@@ -5,10 +5,3 @@ urlpatterns = [
     path('', drink_list, name='drink_list'),
     path('<int:pk>/', drink_detail, name='drink_detail'),
 ]
-
-from django.urls import path
-from . import views
-
-urlpatterns = [
-    path("search/", views.search_drinks, name="search"),
-]

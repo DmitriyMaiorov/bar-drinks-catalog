@@ -23,8 +23,6 @@ def category_detail(request, category_id):
         'category': category,
         'drinks': drinks
     })
-path('categories/', category_list, name='category_list'),
-path('categories/<int:category_id>/', category_detail, name='category_detail'),
 
 from django.shortcuts import render
 from .models import Drink
@@ -37,3 +35,34 @@ def search_drinks(request):
         results = Drink.objects.filter(name__icontains=query)
 
     return render(request, "search.html", {"results": results, "query": query})
+
+def drink_detail(request, id):
+    drink = get_object_or_404(Drink, id=id)
+
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.drink = drink
+            comment.save()
+            return redirect('drink_detail', id=id)
+    else:
+        form = CommentForm()
+
+    return render(request, 'drink_detail.html', {
+        "drink": drink,
+        "form": form,
+        "comments": drink.comments.all().order_by('-created_at')
+    })
+
+
+from django.shortcuts import render, get_object_or_404
+from .models import Drink
+
+def drink_list(request):
+    drinks = Drink.objects.all()
+    return render(request, 'drinks/drink_list.html', {'drinks': drinks})
+
+def drink_detail(request, pk):
+    drink = get_object_or_404(Drink, pk=pk)
+    return render(request, 'drinks/drink_detail.html', {'drink': drink})
