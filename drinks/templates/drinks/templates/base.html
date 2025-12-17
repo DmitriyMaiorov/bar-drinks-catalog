@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Барные напитки{% endblock %}</title>
@@ -9,12 +9,16 @@
 </head>
 <body>
 
+    <!-- Навигация -->
     <div class="navbar">
-        <a href="/static">Главная</a>
-        <a href="/drinks">Напитки</a>
+        <a href="{% url 'home' %}">Главная</a>
+        <a href="{% url 'drink_list' %}">Напитки</a>
+        <a href="{% url 'category_list' %}">Категории</a>
+        <a href="{% url 'search' %}">Поиск</a>
         <a href="/admin/">Админка</a>
     </div>
 
+    <!-- Контент -->
     <div class="content">
         {% block content %}
         {% endblock %}
