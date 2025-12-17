@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Drink, Category
-from .forms import CommentForm
+
 
 def drink_list(request):
     drinks = Drink.objects.all()
@@ -9,18 +9,21 @@ def drink_list(request):
 
 def drink_detail(request, id):
     drink = get_object_or_404(Drink, id=id)
-    form = CommentForm(request.POST or None)
 
-    if form.is_valid():
-        comment = form.save(commit=False)
-        comment.drink = drink
-        comment.save()
-        return redirect('drink_detail', id=id)
+    if request.method == 'POST':
+        text = request.POST.get('text')
+        if text:
+            drink.comments.create(text=text)
+            return redirect('drink_detail', id=id)
 
-    return render(request, 'drinks/drink_detail.html', {
-        'drink': drink,
-        'form': form
-    })
+    return render(request, 'drinks/drink_detail.html', {'drink': drink})
+
+
+def like_drink(request, id):
+    drink = get_object_or_404(Drink, id=id)
+    drink.likes += 1
+    drink.save()
+    return redirect('drink_detail', id=id)
 
 
 def search(request):
@@ -32,10 +35,3 @@ def search(request):
 def categories(request):
     categories = Category.objects.all()
     return render(request, 'drinks/categories.html', {'categories': categories})
-
-
-def like_drink(request, id):
-    drink = get_object_or_404(Drink, id=id)
-    drink.likes += 1
-    drink.save()
-    return redirect('drink_detail', id=id)

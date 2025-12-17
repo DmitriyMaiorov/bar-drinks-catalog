@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Напитки</h1>
+
+{% for drink in drinks %}
+    <p>
+        <a href="/drink/{{ drink.id }}/">{{ drink.name }}</a>
+        ❤️ {{ drink.likes }}
+    </p>
+{% endfor %}
+{% endblock %}

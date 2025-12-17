@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>{{ drink.name }}</h2>
+<p>{{ drink.description }}</p>
+<p><b>Ингредиенты:</b> {{ drink.ingredients }}</p>
+
+<a href="/like/{{ drink.id }}/">❤️ Лайк ({{ drink.likes }})</a>
+
+<h3>Комментарии</h3>
+{% for comment in drink.comments.all %}
+    <p>{{ comment.text }}</p>
+{% empty %}
+    <p>Комментариев нет</p>
+{% endfor %}
+
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="text" placeholder="Комментарий">
+    <button type="submit">Добавить</button>
+</form>
+{% endblock %}
