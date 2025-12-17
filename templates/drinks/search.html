@@ -1,19 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h2 class="page-title">Поиск</h2>
+<h2>Поиск</h2>
 
-<form class="search-form">
-    <input name="q" placeholder="Название или ингредиент">
+<form>
+    <input name="q" value="{{ query }}">
     <button class="btn">Найти</button>
 </form>
 
 {% for drink in drinks %}
-    <div class="search-item">
+    <p>
         <a href="/drink/{{ drink.id }}/">{{ drink.name }}</a>
-    </div>
-{% empty %}
-    <p class="muted">Ничего не найдено</p>
+    </p>
 {% endfor %}
 
 {% endblock %}

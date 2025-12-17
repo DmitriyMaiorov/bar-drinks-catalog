@@ -2,30 +2,31 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Bar Drinks</title>
+    <title>BarDrinks</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
 <body>
 
 <header class="header">
-    <div class="container">
-        <h1 class="logo">🍸 BarDrinks</h1>
+    <div class="container nav">
+        <h2 class="logo">🍸 BarDrinks</h2>
         <nav>
             <a href="/">Главная</a>
             <a href="/categories/">Категории</a>
             <a href="/search/">Поиск</a>
+            <a href="/random/">🎲 Мне повезёт</a>
             <a href="/admin/">Админка</a>
         </nav>
     </div>
 </header>
 
-<main class="container">
+<main class="container content">
     {% block content %}{% endblock %}
 </main>
 
 <footer class="footer">
-    <p>© 2025 BarDrinks</p>
+    © 2025 BarDrinks
 </footer>
 
 </body>

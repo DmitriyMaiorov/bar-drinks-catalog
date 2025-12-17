@@ -1,33 +1,41 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="detail-card">
-    <h2>{{ drink.name }}</h2>
+<h2>{{ drink.name }}</h2>
 
-    <p class="muted">{{ drink.description }}</p>
+<p>
+    ❤️ {{ drink.likes }} |
+    ⭐ {{ drink.average_rating }} |
+    👁 {{ drink.views }}
+</p>
 
-    <h4>Ингредиенты</h4>
-    <p>{{ drink.ingredients }}</p>
+<p>{{ drink.description }}</p>
+<p><b>Ингредиенты:</b> {{ drink.ingredients }}</p>
 
-    <a class="btn like" href="/like/{{ drink.id }}/">
-        ❤️ Лайк ({{ drink.likes }})
-    </a>
-</div>
+<a href="/like/{{ drink.id }}/">❤️ Лайк</a>
 
-<hr>
+<h3>Оценить напиток</h3>
+<form method="post">
+    {% csrf_token %}
+    <select name="rating">
+        <option value="1">⭐</option>
+        <option value="2">⭐⭐</option>
+        <option value="3">⭐⭐⭐</option>
+        <option value="4">⭐⭐⭐⭐</option>
+        <option value="5">⭐⭐⭐⭐⭐</option>
+    </select>
+    <button type="submit">Оценить</button>
+</form>
 
 <h3>Комментарии</h3>
-
 {% for comment in drink.comments.all %}
-    <div class="comment">{{ comment.text }}</div>
-{% empty %}
-    <p class="muted">Комментариев пока нет</p>
+<p>{{ comment.text }}</p>
 {% endfor %}
 
-<form method="post" class="comment-form">
+<form method="post">
     {% csrf_token %}
-    {{ form }}
-    <button class="btn">Отправить</button>
+    <input name="text" placeholder="Комментарий">
+    <button type="submit">Добавить</button>
 </form>
 
 {% endblock %}

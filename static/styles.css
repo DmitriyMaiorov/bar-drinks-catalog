@@ -2,11 +2,18 @@
     box-sizing: border-box;
 }
 
+html, body {
+    height: 100%;
+}
+
 body {
     margin: 0;
     font-family: Inter, Arial, sans-serif;
     background: #0f0f14;
     color: #eaeaf0;
+
+    display: flex;
+    flex-direction: column;
 }
 
 /* Layout */
@@ -16,10 +23,21 @@ body {
     margin: auto;
 }
 
+.content {
+    flex: 1;
+    padding-top: 30px;
+}
+
 /* Header */
 .header {
     background: linear-gradient(90deg, #6a11cb, #2575fc);
     padding: 15px 0;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .logo {
@@ -39,15 +57,10 @@ body {
 
 /* Footer */
 .footer {
-    margin-top: 60px;
-    padding: 20px;
+    padding: 15px 0;
     text-align: center;
     color: #777;
-}
-
-/* Titles */
-.page-title {
-    margin: 30px 0 20px;
+    border-top: 1px solid #222;
 }
 
 /* Cards */
@@ -69,23 +82,6 @@ body {
     box-shadow: 0 10px 30px rgba(0,0,0,.4);
 }
 
-.card h3 {
-    margin-top: 0;
-}
-
-.card-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/* Detail */
-.detail-card {
-    background: #1a1a24;
-    padding: 30px;
-    border-radius: 16px;
-}
-
 /* Buttons */
 .btn {
     background: linear-gradient(90deg, #ff416c, #ff4b2b);
@@ -97,13 +93,8 @@ body {
     cursor: pointer;
 }
 
-.btn.like {
-    display: inline-block;
-    margin-top: 10px;
-}
-
 /* Forms */
-input, textarea {
+input, textarea, select {
     width: 100%;
     padding: 10px;
     border-radius: 8px;
@@ -116,9 +107,4 @@ input, textarea {
     padding: 10px;
     border-radius: 8px;
     margin-bottom: 8px;
-}
-
-.muted {
-    color: #aaa;
-    font-size: 14px;
 }

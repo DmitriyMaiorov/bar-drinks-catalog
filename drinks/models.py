@@ -13,6 +13,7 @@ class Drink(models.Model):
     description = models.TextField()
     ingredients = models.TextField()
     likes = models.IntegerField(default=0)
+    views = models.IntegerField(default=0)
     category = models.ForeignKey(
         Category,
         on_delete=models.SET_NULL,
@@ -20,8 +21,26 @@ class Drink(models.Model):
         blank=True
     )
 
+    def average_rating(self):
+        ratings = self.ratings.all()
+        if not ratings:
+            return 0
+        return round(sum(r.value for r in ratings) / ratings.count(), 1)
+
     def __str__(self):
         return self.name
+
+
+class Rating(models.Model):
+    drink = models.ForeignKey(
+        Drink,
+        related_name='ratings',
+        on_delete=models.CASCADE
+    )
+    value = models.IntegerField()  # 1–5
+
+    def __str__(self):
+        return f'{self.value} ⭐ для {self.drink.name}'
 
 
 class Comment(models.Model):
@@ -31,6 +50,7 @@ class Comment(models.Model):
         on_delete=models.CASCADE
     )
     text = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.text[:30]
+        return f'Комментарий к {self.drink.name}'
