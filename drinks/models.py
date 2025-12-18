@@ -12,13 +12,14 @@ class Drink(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
     ingredients = models.TextField()
+
+    price = models.IntegerField(default=0)
+    volume = models.IntegerField("Объём (мл)", default=0)
+    abv = models.FloatField("Крепость %", default=0)
+
     likes = models.IntegerField(default=0)
     views = models.IntegerField(default=0)
-    price = models.DecimalField(
-        max_digits=6,
-        decimal_places=2,
-        default=0
-    )
+
     category = models.ForeignKey(
         Category,
         on_delete=models.SET_NULL,
@@ -42,7 +43,7 @@ class Rating(models.Model):
         related_name='ratings',
         on_delete=models.CASCADE
     )
-    value = models.IntegerField()  # 1–5
+    value = models.IntegerField()
 
     def __str__(self):
         return f'{self.value} ⭐ для {self.drink.name}'
