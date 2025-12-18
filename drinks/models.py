@@ -14,6 +14,11 @@ class Drink(models.Model):
     ingredients = models.TextField()
     likes = models.IntegerField(default=0)
     views = models.IntegerField(default=0)
+    price = models.DecimalField(
+        max_digits=6,
+        decimal_places=2,
+        default=0
+    )
     category = models.ForeignKey(
         Category,
         on_delete=models.SET_NULL,

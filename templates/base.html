@@ -9,21 +9,21 @@
 <body>
 
 <header class="header">
-    <div class="container nav">
+    <div class="container">
         <h2 class="logo">🍸 BarDrinks</h2>
         <nav>
             <a href="/">Главная</a>
+            <a href="/drinks/">Напитки</a>
             <a href="/categories/">Категории</a>
-            <a href="/search/">Поиск</a>
             <a href="/random/">🎲 Мне повезёт</a>
             <a href="/admin/">Админка</a>
         </nav>
     </div>
 </header>
 
-<main class="container content">
+<div class="container">
     {% block content %}{% endblock %}
-</main>
+</div>
 
 <footer class="footer">
     © 2025 BarDrinks

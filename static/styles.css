@@ -108,3 +108,12 @@ input, textarea, select {
     border-radius: 8px;
     margin-bottom: 8px;
 }
+
+.home-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+    text-align: center;
+}

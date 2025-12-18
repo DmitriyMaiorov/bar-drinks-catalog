@@ -1,15 +1,22 @@
 {% extends 'base.html' %}
+
 {% block content %}
+<h1 class="page-title">Напитки</h1>
 
-<h1>Напитки</h1>
+<div class="grid">
+    {% for drink in drinks %}
+        <div class="card">
+            <h3>
+                <a href="/drink/{{ drink.id }}/">{{ drink.name }}</a>
+            </h3>
 
-{% for drink in drinks %}
-<p>
-    <a href="/drink/{{ drink.id }}/">{{ drink.name }}</a><br>
-    ❤️ {{ drink.likes }} |
-    ⭐ {{ drink.average_rating }} |
-    👁 {{ drink.views }}
-</p>
-{% endfor %}
-
+            <p class="muted">
+                💰 {{ drink.price }} ₽<br>
+                ❤️ {{ drink.likes }}
+                | ⭐ {{ drink.average_rating }}
+                | 👁 {{ drink.views }}
+            </p>
+        </div>
+    {% endfor %}
+</div>
 {% endblock %}

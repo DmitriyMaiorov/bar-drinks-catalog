@@ -4,6 +4,10 @@ from django.db.models import Q
 from .models import Drink, Category, Rating
 
 
+def home(request):
+    return render(request, 'home.html')
+
+
 def drink_list(request):
     drinks = Drink.objects.all()
     return render(request, 'drinks/drink_list.html', {'drinks': drinks})
@@ -19,7 +23,7 @@ def drink_detail(request, id):
             text = request.POST.get('text')
             if text:
                 drink.comments.create(text=text)
-                return redirect('drink_detail', id=id)
+            return redirect('drink_detail', id=id)
 
         if 'rating' in request.POST:
             value = int(request.POST.get('rating'))
